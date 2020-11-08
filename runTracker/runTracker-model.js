@@ -2,6 +2,7 @@ const db = require('../data/db-config')
 
 module.exports = {
     getAllRuns,
+    getPublishedRuns,
     getUserRuns,
     addRun,
     updateRun,
@@ -10,6 +11,11 @@ module.exports = {
 
 function getAllRuns() {
     return db('runTimes')
+}
+
+function getPublishedRuns() {
+    return db('runTimes')
+        .where('publish', true)
 }
 
 function getUserRuns(id) {

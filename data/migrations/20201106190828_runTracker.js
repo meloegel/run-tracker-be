@@ -11,6 +11,7 @@ exports.up = function (knex) {
             tbl.increments('id')
             tbl.integer('runTime').notNullable()
             tbl.integer('distance').notNullable()
+            tbl.boolean('publish')
             tbl.timestamp("timePosted").notNullable().defaultTo(knex.fn.now());
             tbl.integer('pace')
             tbl.text('description')
