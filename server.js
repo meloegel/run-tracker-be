@@ -15,7 +15,6 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api');
 server.use('/api/auth', AuthRouter);
 server.use('/api/run-tracker', runTrackerRouter);
 server.use('api/auth/users', restrictedMiddleware, UserRouter);
