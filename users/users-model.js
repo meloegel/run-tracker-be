@@ -6,8 +6,7 @@ module.exports = {
     addUser,
     updateUser,
     deleteUser,
-    login,
-    getUserRunList
+    login
 }
 
 function getUsers() {
@@ -40,8 +39,4 @@ function login(filter) {
     return db('users')
         .where(filter)
         .orderBy('id')
-}
-
-function getUserRunList(id) {
-
 }
