@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ error: 'Error getting all users' })
+            res.status(500).json({ Error: 'Error getting all users' })
         })
 })
 
@@ -22,18 +22,13 @@ router.get('/:id', (req, res) => {
             if (user) {
                 res.status(200).json(user)
             } else {
-                res.status(404).json({ error: `Could not find user with id: ${id}` })
+                res.status(404).json({ Error: `Could not find user with id: ${id}` })
             }
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ error: 'Error getting user' })
+            res.status(500).json({ Error: 'Error getting user' })
         })
-})
-
-// Gets a Users RunList //
-router.get('/:id/runs', (req, res) => {
-
 })
 
 // Updates User //
@@ -45,15 +40,15 @@ router.put('/:id', (req, res) => {
             if (user) {
                 Users.updateUser(changes, id)
                     .then(updatedUser => {
-                        res.status(200).json({ message: `Updated user with id: ${id}` })
+                        res.status(200).json({ Message: `Updated user with id: ${id}` })
                     })
             } else {
-                res.status(404).json({ error: `Could not find user with id: ${id}` })
+                res.status(404).json({ Error: `Could not find user with id: ${id}` })
             }
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ error: 'Failed to update user' })
+            res.status(500).json({ Error: 'Failed to update user' })
         })
 })
 
@@ -63,14 +58,14 @@ router.delete('/:id', (req, res) => {
     Users.remove(id)
         .then(deleted => {
             if (deleted) {
-                res.status(200).json({ message: `User with id: ${id} has been deleted` })
+                res.status(200).json({ Message: `User with id: ${id} has been deleted` })
             } else {
-                res.status(404).json({ error: `Could not find user with id: ${id}` })
+                res.status(404).json({ Error: `Could not find user with id: ${id}` })
             }
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ error: 'Error deleting user' })
+            res.status(500).json({ Error: 'Error deleting user' })
         })
 })
 
