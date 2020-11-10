@@ -5,6 +5,8 @@ exports.up = function (knex) {
             tbl.increments('id')
             tbl.string('username').notNullable()
             tbl.string('password').notNullable()
+            tbl.string('avatar')
+            tbl.string('location')
             tbl.string('email')
         })
         .createTable('runTimes', tbl => {
