@@ -17,7 +17,7 @@ server.use(express.json());
 
 server.use('/api/auth', AuthRouter);
 server.use('/api/run-tracker', runTrackerRouter);
-server.use('api/auth/users', restrictedMiddleware, UserRouter);
+server.use('/api/auth/users', restrictedMiddleware, UserRouter);
 server.use('/api/auth/run-tracker', restrictedMiddleware, runTrackerAuthRouter);
 
 server.get('/', (req, res) => {
