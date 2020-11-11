@@ -4,20 +4,20 @@ const router = express.Router();
 
 const runTracker = require('./runTracker-model');
 
-// Gets a users runs //
-router.get('/runs/:id', (req, res) => {
+// Gets a run //
+router.get('/run/:id', (req, res) => {
     const { id } = req.params
-    runTracker.getUserRuns(id)
-        .then(runs => {
-            if (runs) {
-                res.status(200).json(runs)
+    runTracker.getRun(id)
+        .then(run => {
+            if (run) {
+                res.status(200).json(run)
             } else {
-                res.status(404).json({ Error: `Could not find runs for user with id: ${id}` })
+                res.status(404).json({ Error: `Could not find run with id: ${id}` })
             }
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ Error: `Error getting runs for user with id: ${id} ` })
+            res.status(500).json({ Error: `Error getting runs with id: ${id} ` })
         })
 })
 
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
         .then(run => {
             res.status(201).json({ Posted: newRun })
         })
-        .cacth(error => {
+        .catch(error => {
             console.log(error)
             res.status(500).json({ Error: 'Error adding run' })
         })
@@ -72,5 +72,21 @@ router.delete('/:id', (req, res) => {
         })
 })
 
+// Gets a users runs //
+router.get('/user/:id', (req, res) => {
+    const { id } = req.params;
+    runTracker.getUserRuns(id)
+        .then(runs => {
+            if (runs) {
+                res.status(200).json(runs)
+            } else {
+                res.status(404).json({ Error: `Could not find runs for user with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: `Error getting runs for user with id: ${id} ` })
+        })
+})
 
 module.exports = router;
