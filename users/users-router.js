@@ -55,7 +55,7 @@ router.put('/:id', (req, res) => {
 // Deletes a User //
 router.delete('/:id', (req, res) => {
     const { id } = req.params
-    Users.remove(id)
+    Users.deleteUser(id)
         .then(deleted => {
             if (deleted) {
                 res.status(200).json({ Message: `User with id: ${id} has been deleted` })
