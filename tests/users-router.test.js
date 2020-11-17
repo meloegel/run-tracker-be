@@ -1,7 +1,6 @@
 const supertest = require('supertest');
 const server = require('../server');
 const db = require('../data/db-config');
-const { default: expectCt } = require('helmet/dist/middlewares/expect-ct');
 
 describe('User-router end point tests', function () {
     describe('Get tests', function () {
