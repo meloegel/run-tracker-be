@@ -49,14 +49,6 @@ Base URL for Deployed API:
 | description | string    | yes      | no     | Short description of run        |
 | userId      | integer   | yes      | no     | Id of user posting              |
 
-## **Login's**
-
-If i need to update the database at any point during the week all users made up until that point will be deleted. These logins will always be available to use.
-| Login | Password | Role |
-| ----- | -------- | ---- |
-| user | asd | user |
-| creator | asd | creator |
-
 ## **Requests and Returns**
 
 ### POST /api/auth/register
@@ -65,9 +57,8 @@ Request Body:
 
 ```
 {
-    "username": "steve",
-    "password": "asd",
-    "role":2
+    "username": "RunnerDude",
+    "password": "ILoveRunning",
 }
 ```
 
@@ -76,9 +67,8 @@ Returns:
 ```
 {
     "data": {
-        "username": "steve",
-        "password": "$2a$10$/RqzR6JBVXeTYSGHwLdsQOItb56bUB5Hr1RanRyC0b1PayVchwRnO",
-        "role": 2
+        "username": "RunnerDude",
+        "password": "$2a$10$/RqzR6JBVXeTYSGHwLdsQOItb56bUB5Hr1RanRyC0b1PayVchwRnO"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1OTU3MjcyMDQsImV4cCI6MTU5NjU5MTIwNH0.CTp5cRIYGPpjrmS7kfyE4_CzxLgA_-FvzxkDk_wpHWs"
 }
@@ -90,8 +80,8 @@ Request Body:
 
 ```
 {
-    "username": "steve",
-    "password": "asd"
+    "username": "RunnerDude",
+    "password": "ILoveRunning"
 }
 ```
 
@@ -102,9 +92,8 @@ Returns:
     "message": "Welcome",
     "user": {
         "id": 10,
-        "username": "steve",
-        "password": "$2a$10$/RqzR6JBVXeTYSGHwLdsQOItb56bUB5Hr1RanRyC0b1PayVchwRnO",
-        "role": 2
+        "username": "RunnerDude",
+        "password": "$2a$10$/RqzR6JBVXeTYSGHwLdsQOItb56bUB5Hr1RanRyC0b1PayVchwRnO"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxMCwidXNlcm5hbWUiOiJzdGV2ZSIsInJvbGUiOjIsImlhdCI6MTU5NTcyNzY0MiwiZXhwIjoxNTk2NTkxNjQyfQ.AObU_nV-7YlrrADdsuFkKO92rNFeY-ajJLX4ulWQvrI"
 }
