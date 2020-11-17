@@ -21,6 +21,23 @@ router.get('/run/:id', (req, res) => {
         })
 })
 
+// Gets a users runs //
+router.get('/user/:id', (req, res) => {
+    const { id } = req.params;
+    runTracker.getUserRuns(id)
+        .then(runs => {
+            if (runs) {
+                res.status(200).json(runs)
+            } else {
+                res.status(404).json({ Error: `Could not find runs for user with id: ${id}` })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ Error: `Error getting runs for user with id: ${id} ` })
+        })
+})
+
 // Posts a new run //
 router.post('/', (req, res) => {
     const newRun = req.body
@@ -72,21 +89,5 @@ router.delete('/:id', (req, res) => {
         })
 })
 
-// Gets a users runs //
-router.get('/user/:id', (req, res) => {
-    const { id } = req.params;
-    runTracker.getUserRuns(id)
-        .then(runs => {
-            if (runs) {
-                res.status(200).json(runs)
-            } else {
-                res.status(404).json({ Error: `Could not find runs for user with id: ${id}` })
-            }
-        })
-        .catch(error => {
-            console.log(error)
-            res.status(500).json({ Error: `Error getting runs for user with id: ${id} ` })
-        })
-})
 
 module.exports = router;

@@ -1,0 +1,132 @@
+const supertest = require('supertest');
+const server = require('../server');
+const db = require('../data/db-config');
+
+
+describe('runTracker-auth-router tests', function () {
+    describe('GET tests', function () {
+        beforeEach(async () => {
+            await db('users').truncate()
+            await db('runTimes').truncate()
+        })
+        it('GET /api/auth/run-tracker/run/1 should return status 200 and respond with JSON', async () => {
+            let token = ''
+            await supertest(server)
+                .post('/api/auth/register')
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/login')
+                .set({ authorization: token })
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/run-tracker')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '1', userId: '1' })
+            return supertest(server)
+                .get('/api/auth/run-tracker/run/1')
+                .set({ authorization: token })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.type).toMatch(/json/i)
+                })
+        })
+        it('GET /api/auth/run-tracker/user/1 should return status 200 and respond with JSON', async () => {
+            let token = ''
+            await supertest(server)
+                .post('/api/auth/register')
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/login')
+                .set({ authorization: token })
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/run-tracker')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '1', userId: '1' })
+            return supertest(server)
+                .get('/api/auth/run-tracker/user/1')
+                .set({ authorization: token })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.type).toMatch(/json/i)
+                })
+        })
+    })
+    describe('POST PUT and DELETE tests', function () {
+        beforeEach(async () => {
+            await db('users').truncate()
+            await db('runTimes').truncate()
+        })
+        it('POST /api/auth/run-tracker should return status 201 and return JSON', async () => {
+            let token = ''
+            await supertest(server)
+                .post('/api/auth/register')
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/login')
+                .set({ authorization: token })
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            return supertest(server)
+                .post('/api/auth/run-tracker')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '1', userId: '1' })
+                .then(res => {
+                    expect(res.status).toBe(201)
+                    expect(res.type).toMatch(/json/i)
+                })
+        })
+        it('PUT /api/auth/run-tracker/1 should return status 200 and should respond with JSON', async () => {
+            let token = ''
+            await supertest(server)
+                .post('/api/auth/register')
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/login')
+                .set({ authorization: token })
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/run-tracker')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '1', userId: '1' })
+            return supertest(server)
+                .put('/api/auth/run-tracker/1')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '2', userId: '1' })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.type).toMatch(/json/i)
+                })
+        })
+        it('DELETE /api/auth/run-tracker/1 should status 200 and should respond with JSON', async () => {
+            let token = ''
+            await supertest(server)
+                .post('/api/auth/register')
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/login')
+                .set({ authorization: token })
+                .send({ username: 'testUsername', password: 'testPassword' })
+                .then(async res => token = res.body.token)
+            await supertest(server)
+                .post('/api/auth/run-tracker')
+                .set({ authorization: token })
+                .send({ runTime: '1', distance: '1', userId: '1' })
+            return supertest(server)
+                .delete('/api/auth/run-tracker/1')
+                .set({ authorization: token })
+                .then(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.type).toMatch(/json/i)
+                })
+        })
+    })
+})
