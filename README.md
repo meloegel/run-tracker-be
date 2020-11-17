@@ -4,7 +4,7 @@
 
 ## Documentation:
 
-Base URL for Deployed API: <br>
+Base URL for Deployed API: https://run-tracker-be.herokuapp.com/ <br>
 Front-End Github: https://github.com/meloegel/run-tracker-fe <br>
 Front-End Deployed Link: <br>
 

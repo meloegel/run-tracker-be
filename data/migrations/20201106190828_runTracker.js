@@ -11,11 +11,11 @@ exports.up = function (knex) {
         })
         .createTable('runTimes', tbl => {
             tbl.increments('id')
-            tbl.time('runTime').notNullable()
+            tbl.integer('runTime').notNullable()
             tbl.integer('distance').notNullable()
             tbl.boolean('publish')
             tbl.timestamp("timePosted").notNullable().defaultTo(knex.fn.now());
-            tbl.time('pace')
+            tbl.integer('pace')
             tbl.string('description')
             tbl.integer('userId').unsigned().notNullable().references('users.id').onUpdate('CASCADE').onDelete('CASCADE')
         })

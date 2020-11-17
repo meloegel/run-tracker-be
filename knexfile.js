@@ -1,4 +1,4 @@
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/api/auth"
+const pgConnection = process.env.DATABASE_URL || "postgres://pozgamhaxtpwtf:5a66c2db31bf7d9890c840e68d7747d6208f3701221e9e259689aa43a1164d52@ec2-54-165-164-38.compute-1.amazonaws.com:5432/d2pe4pthv5q95p"
 
 
 module.exports = {
