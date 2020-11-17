@@ -16,7 +16,7 @@ Base URL for Deployed API:
 | GET     | /api/run-tracker               | gets all runs                       | X              | -                |
 | GET     | /api/run-tracker/user/:id      | gets a users info for run post info | X              | -                |
 | GET     | /api/run-tracker/runs          | gets all published runs             | X              | -                |
-| GET     | /api/auth/run-tracker/:id      | gets a specific run                 | X              | -                |
+| GET     | /api/auth/run-tracker/run/:id  | gets a specific run                 | X              | -                |
 | GET     | /api/auth/run-tracker/user/:id | gets a users runs                   | X              | X                |
 | PUT     | /api/auth/users/:id            | edits info for user with given id   | X              | X                |
 | PUT     | /api/auth/run-tracker/:id      | edits info for run with given id    | X              | X                |
@@ -99,26 +99,34 @@ Returns:
 }
 ```
 
-### POST /api/auth/howto/creator
+### POST /api/auth/run-tracker
 
 Request Body:
 
 ```
  {
-     "name": "Start a fire",
-     "description": "Simple way to start a fire",
-     "steps": "Step 1: Pile up your wood in fireplace Step 2: add lighter fluid Step 3: light a match and throw it in the lighter fluid and enjoy! ",
-      "category": "Home",
-     "complexity": "5min"
+     "runTime": "18:42",
+     "distance": "2",
+     "pace": "8",
+     "description": "Nice Run",
+     "publish": "1",
+     "userId": "1"
  }
 ```
 
 Returns:
 
 ```
-[
-    6
-]
+{
+    "Posted": {
+        "runTime": "18:42",
+        "distance": "2",
+        "pace": "8",
+        "description": "Nice Run",
+        "publish": "1",
+        "userId": "1"
+    }
+}
 ```
 
 ### GET /api/auth/users
@@ -127,18 +135,23 @@ Returns:
 
 ```
 [
-    {
-        "id": 4,
-        "username": "test",
-        "password": "$2a$10$6VtVm1Ygj.oBISVTkvJig.eggF0FZ5zEXo2TKb7Uwwz0MUBOPAhZa",
-        "role": 2
+     {
+        "id": 1,
+        "username": "Mark",
+        "password": "asdasd",
+        "avatar": "https://img.etimg.com/thumb/msid-67536727,width-650,imgsize-779412,,resizemode-4,quality-100/running-shoes_gettyimages.jp",
+        "location": "Detroit, MI",
+        "email": "email@email.com"
     },
     {
-        "id": 5,
-        "username": "admin",
-        "password": "$2a$10$aHXy8LIckAloSElGhBH3f.aTZL0y6E9cnrKaNqfhNmjmNv412YgCy",
-        "role": 2
-    }
+        "id": 2,
+        "username": "RunnerDude",
+        "password": "asdasd",
+        "avatar": "https://st4.depositphotos.com/3369547/25587/v/1600/depositphotos_255876378-stock-illustration-young-athletic-man-running-avatar.jpg",
+        "location": "Devner, Co",
+        "email": "testemail@email.com"
+    },
+    .......
 ]
 ```
 
@@ -149,39 +162,129 @@ Returns:
 ```
 {
     "id": 1,
-    "username": "mark",
-    "password": "asd",
-    "role": 2
+    "username": "Mark",
+    "password": "asdasd",
+    "avatar": "https://img.etimg.com/thumb/msid-67536727,width-650,imgsize-779412,,resizemode-4,quality-100/running-shoes_gettyimages.jp",
+    "location": "Detroit, MI",
+    "email": "email@email.com"
 }
 ```
 
-### GET /api/auth/howto
+### GET /api/run-tracker
+
+Returns:
+
+```
+[
+   {
+        "id": 1,
+        "runTime": "24:31",
+        "distance": 3,
+        "publish": 1,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:10",
+        "description": "Hard run, it was 70 degrees",
+        "userId": 1
+    },
+    {
+        "id": 2,
+        "runTime": "25:07",
+        "distance": 3,
+        "publish": 0,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:19",
+        "description": "Easy pace",
+        "userId": 1
+    },
+    ..........
+]
+```
+
+### GET /api/run-traker/user/:id
+
+Returns:
+
+```
+{
+    "id": 1,
+    "username": "Mark",
+    "password": "asdasd",
+    "avatar": "https://img.etimg.com/thumb/msid-67536727,width-650,imgsize-779412,,resizemode-4,quality-100/running-shoes_gettyimages.jp",
+    "location": "Detroit, MI",
+    "email": "email@email.com"
+}
+```
+
+### GET /api/run-traker/runs
+
+Returns:
+
+```
+ {
+        "id": 1,
+        "runTime": "24:31",
+        "distance": 3,
+        "publish": 1,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:10",
+        "description": "Hard run, it was 70 degrees",
+        "userId": 1
+    },
+    {
+        "id": 3,
+        "runTime": "33:08",
+        "distance": 4,
+        "publish": 1,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:19",
+        "description": "Easy pace",
+        "userId": 1
+    },
+    .........
+```
+
+### GET /api/auth/run-tracker/run/:id
+
+Returns:
+
+```
+{
+    "id": 1,
+    "runTime": "24:31",
+    "distance": 3,
+    "publish": 1,
+    "timePosted": "2020-11-17 01:34:07",
+    "pace": "8:10",
+    "description": "Hard run, it was 70 degrees",
+    "userId": 1
+}
+```
+
+### GET /api/auth/run-tracker/user/:id
 
 Returns:
 
 ```
 [
     {
-
+        "runTimeID": 1,
+        "runTime": "24:31",
+        "distance": 3,
+        "publish": 1,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:10",
+        "description": "Hard run, it was 70 degrees"
+    },
     {
-        "id": 6,
-        "name": "Start a fire",
-        "description": "Simple way to start a fire",
-        "steps": "Step 1: Pile up your wood in fireplace Step 2: add lighter fluid Step 3: light a match and throw it in the lighter fluid and enjoy! ",
-        "category": "Home",
-        "complexity": "5min"
-    }
-]
-```
-
-### GET /api/auth/howto/:id
-
-Returns:
-
-```
-{
-
-}
+        "runTimeID": 2,
+        "runTime": "25:07",
+        "distance": 3,
+        "publish": 0,
+        "timePosted": "2020-11-17 01:34:07",
+        "pace": "8:19",
+        "description": "Easy pace"
+    },
+    ........
 ```
 
 ### PUT /api/auth/users/:id
