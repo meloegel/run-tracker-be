@@ -4,9 +4,9 @@
 
 ## Documentation:
 
-Base URL for Deployed API:
-Front-End Github:
-Front-End Deployed Link:
+Base URL for Deployed API: <br>
+Front-End Github: <br>
+Front-End Deployed Link: <br>
 
 ## About
 
