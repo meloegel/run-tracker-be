@@ -26,11 +26,11 @@ Run Tracker was created by Mark Loegel. Mark created Run Tracker because he has 
 
 ## File Structure
 
-[<img src="./imgs/BE-FileStructure.PNG" width = "200" />]
+<img src="./imgs/BE-FileStructure.PNG" width = "200" />
 
 ## Database Schema
 
-[<img src="./imgs/DatabaseSchema.PNG" width = "700" />]
+<img src="./imgs/DatabaseSchema.PNG" width = "700" />
 
 ## **Endpoints**
 
