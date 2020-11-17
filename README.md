@@ -1,6 +1,6 @@
 # Run Tracker BE
 
-## Created By: Mark LoegeL
+## Created By: Mark Loegel
 
 ## Documentation:
 
