@@ -293,9 +293,12 @@ Request Body:
 
 ```
 {
-    "username": "steve",
-    "password": "asd",
-    "role":1
+    "id": 1,
+    "username": "Mark",
+    "password": "asdasd",
+    "avatar": "https://img.etimg.com/thumb/msid-67536727,width-650,imgsize-779412,,resizemode-4,quality-100/running-shoes_gettyimages.jp",
+    "location": "Detroit, MI",
+    "email": "email@email.com"
 }
 ```
 
@@ -303,35 +306,40 @@ Returns:
 
 ```
 {
-    "Message": "Updated User"
+    "Message": "Updated user with id: 1"
 }
 ```
 
-### PUT /api/auth/howto/creator/:id
+### PUT /api/auth/run-tracker/:id
 
 Request Body:
 
 ```
 {
-
-    }
+     "runTime": "18:42",
+     "distance": "2",
+     "pace": "8",
+     "description": "Nice Run",
+     "publish": "1",
+     "userId": "1"
+ }
 ```
 
 Returns:
 
 ```
 {
-    "Message": "Updated How-to with id: 1"
+    "Message": "Updated run with id: 1"
 }
 ```
 
-### DELETE /api/auth/howto/creator/:id
+### DELETE /api/auth/run-tracker/:id
 
 Returns:
 
 ```
 {
-    "Removed": "How-to with id: 6"
+    "Message": "Run with id: 1 has been deleted"
 }
 ```
 
@@ -341,6 +349,6 @@ Returns:
 
 ```
 {
-    "Removed": "User with id: 9"
+    "Message": "User with id: 1 has been deleted"
 }
 ```
