@@ -1,8 +1,36 @@
 # Run Tracker BE
 
+## Created By: Mark LoegeL
+
 ## Documentation:
 
 Base URL for Deployed API:
+Front-End Github:
+Front-End Deployed Link:
+
+## About
+
+about run tracker be
+
+## Technologies Used
+
+-Node <br>
+-Express<br>
+-Knex<br>
+-Bcryptjs<br>
+-Helmet<br>
+-Jsonwebtoken<br>
+-PostgresSQL3<br>
+-Jest<br>
+-Supertest<br>
+
+## File Structure
+
+[<img src="./imgs/BE-FileStructure.PNG" width = "200" />]
+
+## Database Schema
+
+[<img src="./imgs/DatabaseSchema.PNG" width = "700" />]
 
 ## **Endpoints**
 
@@ -14,9 +42,9 @@ Base URL for Deployed API:
 | GET     | /api/auth/users                | gets all users                      | X              | -                |
 | GET     | /api/auth/users/:id            | gets a specifc user                 | X              | -                |
 | GET     | /api/run-tracker               | gets all runs                       | X              | -                |
-| GET     | /api/run-tracker/user/:id      | gets a users info for run post info | X              | -                |
-| GET     | /api/run-tracker/runs          | gets all published runs             | X              | -                |
-| GET     | /api/auth/run-tracker/run/:id  | gets a specific run                 | X              | -                |
+| GET     | /api/run-tracker/user/:id      | gets a users info for run post info | -              | -                |
+| GET     | /api/run-tracker/runs          | gets all published runs             | -              | -                |
+| GET     | /api/auth/run-tracker/run/:id  | gets a specific run                 | X              | X                |
 | GET     | /api/auth/run-tracker/user/:id | gets a users runs                   | X              | X                |
 | PUT     | /api/auth/users/:id            | edits info for user with given id   | X              | X                |
 | PUT     | /api/auth/run-tracker/:id      | edits info for run with given id    | X              | X                |
@@ -34,7 +62,7 @@ Base URL for Deployed API:
 | password | string  | yes      | no     | User's password                 |
 | avatar   | string  | no       | no     | html url of users avatar        |
 | location | string  | no       | no     | location of user                |
-| eamil    | string  | no       | no     | email of user                   |
+| email    | string  | no       | no     | email of user                   |
 
 ## **Run Times**
 
