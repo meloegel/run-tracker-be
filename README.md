@@ -228,7 +228,7 @@ Returns:
 ]
 ```
 
-### GET /api/run-traker/user/:id
+### GET /api/run-tracker/user/:id
 
 Returns:
 
@@ -243,7 +243,7 @@ Returns:
 }
 ```
 
-### GET /api/run-traker/runs
+### GET /api/run-tracker/runs
 
 Returns:
 
