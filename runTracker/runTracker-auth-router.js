@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
         })
         .catch(error => {
             console.log(error)
-            res.status(500).json({ Error: 'Failed to updated run' })
+            res.status(500).json({ Error: 'Failed to update run' })
         })
 })
 
